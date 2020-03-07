@@ -1,0 +1,15 @@
+version: 0.0.1
+
+labels:
+  httpd:
+    exec:
+      command: CTIME=`date +"%Y-%m-%d %T"`; /usr/bin/top -b -c -n 1
+      pipes:
+        - grep httpd
+        - grep -v grep
+    delay: 5
+    count: 10
+    timeout: 10
+    outputs:
+      - | awk -v "t=$CTIME" '{ s += $9 } END { print t,s }' >> /var/log/ginfo/httpd_cpu.log
+      - | awk -v "t=$CTIME" '{ s += $10 } END { print t,s }' >> /var/log/ginfo/httpd_mem.log
