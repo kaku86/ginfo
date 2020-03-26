@@ -14,7 +14,7 @@ govet:
 
 .PHONY: gobuild
 gobuild:
-	go build -o ./dists/$(NAME).exe cmd/$(NAME)/main.go
+	go build -o ./dists/$(NAME).exe ./cmd/$(NAME)/main.go
 	cp -p ./configs/labels.yaml ./dists
 
 .PHONY: fmt
