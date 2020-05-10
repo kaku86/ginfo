@@ -24,7 +24,11 @@ fmt: gofmt
 lint: golint govet
 
 .PHONY: build
-build: fmt lint gobuild
+build: fmt lint gobuild tags
+
+.PHONY: tags
+tags:
+	ctags --options=NONE --options=.ctags -R -f .tags
 
 .PHONY: clean
 clean:
