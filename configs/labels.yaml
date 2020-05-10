@@ -11,5 +11,5 @@ labels:
     count: 10
     timeout: 10
     outputs:
-      - | awk -v "t=$CTIME" '{ s += $9 } END { print t,s }' >> /var/log/ginfo/httpd_cpu.log
-      - | awk -v "t=$CTIME" '{ s += $10 } END { print t,s }' >> /var/log/ginfo/httpd_mem.log
+      - awk -v "t=$CTIME" '{ s += $9 } END { print t,s }' >> /var/log/ginfo/httpd_cpu.log
+      - awk -v "t=$CTIME" '{ s += $10 } END { print t,s }' >> /var/log/ginfo/httpd_mem.log
